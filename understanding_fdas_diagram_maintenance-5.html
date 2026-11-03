@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding the FDAS Diagram and Maintenance</title>
+<style>
+:root{--bg:#101010;--panel:#1b1b1b;--orange:#ff8a00;--light:#f4f4f4;--muted:#c4c4c4;--line:#383838}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--light);font:16px/1.65 Arial,sans-serif}
+header{padding:54px 20px;text-align:center;background:linear-gradient(135deg,#090909,#292019);border-bottom:3px solid var(--orange)}
+header h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.15;margin:0 auto 14px;max-width:900px}
+header p{color:#ddd;max-width:720px;margin:auto}
+nav{position:sticky;top:0;background:#151515ee;backdrop-filter:blur(8px);padding:12px;text-align:center;border-bottom:1px solid var(--line);z-index:5}
+nav a{color:var(--light);text-decoration:none;margin:6px 10px;display:inline-block;font-weight:bold}
+nav a:hover{color:var(--orange)}
+main{max-width:1000px;margin:auto;padding:24px 18px 60px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;margin:22px 0;scroll-margin-top:85px}
+h2{color:var(--orange);margin-top:0}
+h3{color:#ffb04d;margin-bottom:6px}
+p,li{color:#e5e5e5}
+.diagram{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin:22px 0}
+.box{background:#292929;border:2px solid var(--orange);border-radius:10px;padding:13px 16px;text-align:center;min-width:135px;font-weight:bold}
+.arrow{color:var(--orange);font-size:25px;font-weight:bold}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:#242424;border-left:4px solid var(--orange);padding:15px;border-radius:8px}
+.tip{background:#2a2117;border:1px solid #8d4d00;padding:14px;border-radius:9px;margin:12px 0}
+button{background:var(--orange);color:#151515;border:0;border-radius:8px;padding:11px 17px;font-weight:bold;cursor:pointer}
+button:hover{background:#ffad42}
+.question{padding:17px;margin:15px 0;background:#242424;border:1px solid var(--line);border-radius:10px}
+.question p{font-weight:bold;margin:0 0 10px}
+label{display:block;padding:7px 9px;margin:5px 0;border-radius:6px;cursor:pointer;color:#eee}
+label:hover{background:#333}
+input{accent-color:var(--orange);margin-right:8px}
+.feedback{font-weight:bold;margin-top:8px}
+#result{font-size:1.1rem;font-weight:bold;color:var(--orange);margin:18px 0}
+footer{text-align:center;color:#aaa;padding:20px;border-top:1px solid var(--line)}
+.small{color:var(--muted);font-size:.92rem}
+</style>
+</head>
+<body>
+<header>
+<h1>Understanding the FDAS Diagram and Maintenance</h1>
+<p>A simple learning guide to the Fire Detection and Alarm System (FDAS), its control panel, wiring concepts, and proper maintenance.</p>
+</header>
+<nav>
+<a href="#lesson">Lesson</a><a href="#components">Components</a><a href="#maintenance">Maintenance</a><a href="#tips">Tips</a><a href="#quiz">Take the Quiz</a>
+</nav>
+<main>
+<section id="lesson">
+<h2>1. What is FDAS?</h2>
+<p>A <b>Fire Detection and Alarm System (FDAS)</b> detects signs of fire and alerts building occupants. The Fire Alarm Control Panel (FACP) is the central unit that receives signals from initiating devices and manages alarm notifications.</p>
+<h3>Basic FDAS flow</h3>
+<div class="diagram" aria-label="Basic FDAS flow diagram">
+<div class="box">Smoke / Heat<br>Detectors</div><div class="arrow">→</div>
+<div class="box">Fire Alarm<br>Control Panel</div><div class="arrow">→</div>
+<div class="box">Notification<br>Devices</div>
+</div>
+<p class="small">Detectors send signals to the control panel. When an alarm condition is identified, the panel activates notification devices such as horns, bells, or strobes.</p>
+<h3>Types of Fire Alarm Control Panels</h3>
+<div class="grid">
+<div class="card"><b>Conventional panel</b><p>Groups devices into zones. The panel identifies the zone where an alarm or fault occurs, rather than the exact individual device.</p></div>
+<div class="card"><b>Addressable panel</b><p>Gives each connected device a unique address, helping identify the specific device reporting an alarm or fault.</p></div>
+<div class="card"><b>Hybrid panel</b><p>Combines conventional and addressable technologies.</p></div>
+</div>
+</section>
+<section id="components">
+<h2>2. Important Components and Wiring Concepts</h2>
+<div class="grid">
+<div class="card"><h3>FACP</h3><p>The central control unit that monitors the system and manages alarm signals.</p></div>
+<div class="card"><h3>Initiating devices</h3><p>Devices such as smoke detectors, heat detectors, and manual call points that report fire-related conditions.</p></div>
+<div class="card"><h3>Notification devices</h3><p>Audible or visible devices that warn occupants, such as bells, horns, and strobes.</p></div>
+<div class="card"><h3>EOL resistor</h3><p>An End-of-Line resistor used by a supervised circuit so the panel can monitor wiring integrity. Its value and placement must follow the panel manufacturer's instructions.</p></div>
+<div class="card"><h3>Repeater panel</h3><p>A remote display that mirrors information from the main fire alarm control panel at another location.</p></div>
+<div class="card"><h3>Wiring</h3><p>Connects field devices and notification appliances to the control panel. Follow the approved wiring diagram and manufacturer requirements.</p></div>
+</div>
+</section>
+<section id="maintenance">
+<h2>3. FDAS Maintenance</h2>
+<p>Regular inspection and maintenance help keep the fire alarm system reliable and ready to operate.</p>
+<h3>Maintenance checklist</h3>
+<ul>
+<li>Inspect the control panel for trouble indicators, damage, and abnormal conditions.</li>
+<li>Check detectors and keep them clean and unobstructed.</li>
+<li>Inspect backup batteries and their connections.</li>
+<li>Test notification devices to confirm they operate correctly.</li>
+<li>Review wiring, labels, and accessible connections for visible damage.</li>
+<li>Record inspections, tests, faults, and corrective actions in the maintenance documentation.</li>
+</ul>
+<h3>Common maintenance activities</h3>
+<ol>
+<li><b>Inspection:</b> Look for damage, dust, loose connections, and trouble signals.</li>
+<li><b>Cleaning:</b> Clean detectors and equipment according to manufacturer instructions.</li>
+<li><b>Testing:</b> Test devices and alarm functions using approved procedures.</li>
+<li><b>System checkup:</b> Confirm that the panel, devices, batteries, and notification appliances work together.</li>
+<li><b>Component replacement:</b> Replace faulty or expired parts with compatible approved components.</li>
+</ol>
+<div class="tip"><b>Safety reminder:</b> FDAS testing and maintenance should be performed by qualified personnel, following the manufacturer's instructions, approved plans, and applicable fire-safety requirements. Do not disable or disconnect a working alarm system without an authorized procedure.</div>
+</section>
+<section id="tips">
+<h2>4. Helpful Study Tips</h2>
+<div class="tip">🟠 Remember: <b>Conventional = Zones</b>.</div>
+<div class="tip">🟠 Remember: <b>Addressable = Unique device addresses</b>.</div>
+<div class="tip">🟠 Remember: <b>Hybrid = Combination of conventional and addressable</b>.</div>
+<div class="tip">🟠 The FACP is the central unit. Detectors report conditions to it, and notification devices alert occupants.</div>
+<div class="tip">🟠 Maintenance includes inspection, cleaning, testing, system checkup, and proper documentation.</div>
+</section>
+<section id="quiz">
+<h2>5. FDAS Lesson Quiz – 10 Questions</h2>
+<p>Choose one answer for each question, then press <b>Check My Answers</b> to see your score and explanations.</p>
+<form id="quizForm">
+<div class="question" data-answer="a" data-explain="The FACP is the central unit that monitors devices and manages alarm signals.">
+<p>1. What is the main role of the Fire Alarm Control Panel (FACP)?</p>
+<label><input type="radio" name="q1" value="a">A. To act as the central hub that monitors devices and manages alarm signals</label>
+<label><input type="radio" name="q1" value="b">B. To supply water to sprinklers</label>
+<label><input type="radio" name="q1" value="c">C. To replace every smoke detector</label>
+<label><input type="radio" name="q1" value="d">D. To store maintenance tools</label></div>
+<div class="question" data-answer="b" data-explain="Conventional systems group initiating devices into zones.">
+<p>2. In a conventional fire alarm system, devices are grouped into what?</p>
+<label><input type="radio" name="q2" value="a">A. Unique digital addresses</label>
+<label><input type="radio" name="q2" value="b">B. Zones</label>
+<label><input type="radio" name="q2" value="c">C. Wireless channels only</label>
+<label><input type="radio" name="q2" value="d">D. Repeater screens</label></div>
+<div class="question" data-answer="c" data-explain="Addressable systems assign a unique address to each device.">
+<p>3. Which panel type assigns a unique address to each device?</p>
+<label><input type="radio" name="q3" value="a">A. Conventional</label>
+<label><input type="radio" name="q3" value="b">B. Hybrid only</label>
+<label><input type="radio" name="q3" value="c">C. Addressable</label>
+<label><input type="radio" name="q3" value="d">D. Manual</label></div>
+<div class="question" data-answer="a" data-explain="In the lesson's conventional circuit example, devices in a zone are connected in parallel. Always follow the approved wiring diagram for the actual system.">
+<p>4. How are devices in a conventional zone connected according to the lesson?</p>
+<label><input type="radio" name="q4" value="a">A. Connected in parallel</label>
+<label><input type="radio" name="q4" value="b">B. Connected to a separate internet router</label>
+<label><input type="radio" name="q4" value="c">C. Connected only by wireless signals</label>
+<label><input type="radio" name="q4" value="d">D. Connected in a digital loop with unique addresses</label></div>
+<div class="question" data-answer="b" data-explain="The EOL resistor allows the panel to supervise circuit wiring integrity.">
+<p>5. What is the purpose of an End-of-Line (EOL) resistor?</p>
+<label><input type="radio" name="q5" value="a">A. To make the alarm louder</label>
+<label><input type="radio" name="q5" value="b">B. To supervise circuit wiring integrity</label>
+<label><input type="radio" name="q5" value="c">C. To recharge the backup battery</label>
+<label><input type="radio" name="q5" value="d">D. To assign a device address</label></div>
+<div class="question" data-answer="c" data-explain="A repeater panel mirrors information from the main panel at another location.">
+<p>6. What does a repeater panel do?</p>
+<label><input type="radio" name="q6" value="a">A. Replaces the main FACP</label>
+<label><input type="radio" name="q6" value="b">B. Detects smoke using a sensor</label>
+<label><input type="radio" name="q6" value="c">C. Mirrors information from the main panel at another location</label>
+<label><input type="radio" name="q6" value="d">D. Supplies backup power</label></div>
+<div class="question" data-answer="a" data-explain="Backup batteries and their connections should be inspected as part of maintenance.">
+<p>7. Which is part of the essential FDAS maintenance checklist?</p>
+<label><input type="radio" name="q7" value="a">A. Inspecting backup batteries for corrosion and charge</label>
+<label><input type="radio" name="q7" value="b">B. Painting detector openings</label>
+<label><input type="radio" name="q7" value="c">C. Removing all system labels</label>
+<label><input type="radio" name="q7" value="d">D. Keeping faults unrecorded</label></div>
+<div class="question" data-answer="b" data-explain="Cleaning detectors according to instructions helps prevent dust buildup and unwanted alarms.">
+<p>8. Why should smoke and heat detectors be cleaned?</p>
+<label><input type="radio" name="q8" value="a">A. To change their device address</label>
+<label><input type="radio" name="q8" value="b">B. To prevent dust accumulation and reduce false alarms</label>
+<label><input type="radio" name="q8" value="c">C. To increase the building's electrical load</label>
+<label><input type="radio" name="q8" value="d">D. To turn off the control panel</label></div>
+<div class="question" data-answer="c" data-explain="The quiz answer follows the lesson's maintenance documentation terminology: Fire Safety Maintenance Report (FSMR).">
+<p>9. What document should be maintained to record FDAS inspection and testing?</p>
+<label><input type="radio" name="q9" value="a">A. A shopping list</label>
+<label><input type="radio" name="q9" value="b">B. A personal diary only</label>
+<label><input type="radio" name="q9" value="c">C. A Fire Safety Maintenance Report (FSMR)</label>
+<label><input type="radio" name="q9" value="d">D. A building map without test results</label></div>
+<div class="question" data-answer="b" data-explain="A hybrid panel combines conventional and addressable technologies.">
+<p>10. Which statement best describes a hybrid FACP?</p>
+<label><input type="radio" name="q10" value="a">A. It uses only conventional zones</label>
+<label><input type="radio" name="q10" value="b">B. It combines conventional and addressable technologies</label>
+<label><input type="radio" name="q10" value="c">C. It has no control panel</label>
+<label><input type="radio" name="q10" value="d">D. It is only a backup battery</label></div>
+<button type="button" onclick="gradeQuiz()">Check My Answers</button>
+<button type="reset" onclick="resetQuiz()" style="background:#444;color:white;margin-left:7px">Try Again</button>
+<div id="result" aria-live="polite"></div>
+<div id="review"></div>
+</form>
+</section>
+</main>
+<footer>FDAS Learning Website • Study guide for educational purposes</footer>
+<script>
+function gradeQuiz(){
+ const questions=[...document.querySelectorAll('.question')];let score=0;let review='';
+ questions.forEach((q,i)=>{const chosen=q.querySelector('input:checked');const correct=q.dataset.answer;const ok=chosen&&chosen.value===correct;if(ok)score++;
+ const answer=q.querySelector('input[value="'+correct+'"]').parentElement.textContent.trim();
+ review+=`<div class="tip"><b>Question ${i+1}: ${ok?'Correct ✓':'Incorrect ✗'}</b><br>Correct answer: ${answer}<br><span class="small">${q.dataset.explain}</span></div>`;
+ });
+ document.getElementById('result').textContent=`Your score: ${score} out of 10 — ${score===10?'Excellent!':score>=8?'Very good!':score>=6?'Good effort!':'Keep reviewing and try again!'}`;
+ document.getElementById('review').innerHTML=review;
+}
+function resetQuiz(){document.getElementById('result').textContent='';document.getElementById('review').innerHTML='';}
+</script>
+</body>
+</html>
